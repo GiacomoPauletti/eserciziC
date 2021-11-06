@@ -1,9 +1,6 @@
 #include <stdio.h>
 
-#define NUMBER 600851475143
-#define SQRT_OF_NUMBER 775146
-/* non è proprio la radice esatta, un po di più, ma almeno riduce i
- * conti */
+#define PRIME_INDEX 10001
 
 int findNumberDigits(long int number);
 
@@ -11,26 +8,24 @@ int isPrime(long int number);
 
 int main()
 {
-    int factor;
-    int maxPrimeFactor;
+    int primeCounter;
+    long int currentNumber;
 
-    int digitNumber;
-    int digitLimit;
-    long int comparedNumber;
-    int digitCounter;
-    
+    currentNumber = 2;
+    primeCounter = 0;
 
-    digitNumber = findNumberDigits(NUMBER);
-    digitLimit = ( digitNumber + 1 ) / 2;
-
-    maxPrimeFactor = 1;
-    for (factor = 2; factor < SQRT_OF_NUMBER; factor++)
+    while( primeCounter < PRIME_INDEX )
     {
-        if (NUMBER % factor == 0 && isPrime(factor))
-            if (maxPrimeFactor < factor) maxPrimeFactor = factor;
+        if (isPrime(currentNumber))
+        {
+            primeCounter++;
+
+        }
+        currentNumber++;
     }
 
-    printf("The largest prime factor is: %d\n", maxPrimeFactor);
+    printf("The %dth prime is : %ld\n", PRIME_INDEX, currentNumber - 1);
+
 }
 
 int isPrime(long int number)
