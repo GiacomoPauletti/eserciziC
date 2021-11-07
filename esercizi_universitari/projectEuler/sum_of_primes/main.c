@@ -1,41 +1,24 @@
 #include <stdio.h>
 
-#define NUMBER 600851475143
-#define SQRT_OF_NUMBER 775146
-
-int findNumberDigits(long int number);
+#define LIMIT 2000000 //2mln
 
 int isPrime(long int number);
 
+int findNumberDigits(long int number);
+
 int main()
 {
-    int factor;
+    long int sum;
+    long int cursor;
 
-    int found;
-
-    int digitNumber;
-    int digitLimit;
-    long int comparedNumber;
-    int digitCounter;
-    
-
-    digitNumber = findNumberDigits(NUMBER);
-    digitLimit = ( digitNumber + 1 ) / 2;
-
-    found = 0;
-    for (factor = SQRT_OF_NUMBER; factor > 0 && found == 0; factor--)
+    sum = 0;
+    for (cursor = 2; cursor < LIMIT; cursor++)
     {
-        /* l'ottimizzazione consiste nel partire a cercare da sqrt(numero)
-         * in giù, perchè cosi il primo fattore primo che trovo è di 
-         * sicuro il più grande */
-        if (NUMBER % factor == 0 && isPrime(factor))
-            found = 1;
-
+        if (isPrime(cursor)) sum+= cursor;
     }
-
-    printf("The largest prime factor is: %d\n", factor);
-
+    printf("The sum is %ld\n", sum);
 }
+
 
 int isPrime(long int number)
 {
