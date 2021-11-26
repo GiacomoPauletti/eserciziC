@@ -1,4 +1,4 @@
-#include "map.h"
+#include "../map/map.h"
 
 typedef enum { up, right, down, left} Direction;
 

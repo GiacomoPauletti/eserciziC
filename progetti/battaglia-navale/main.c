@@ -1,25 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "map.h"
+#include "dependencies/map/map.h"
+#include "dependencies/ship/ship.h"
 
 #define MAX_NAME_LENGTH 20
+/* maximum length of player name */
 
 typedef struct
 {
-    char name[MAX_NAME_LENGTH];
+    char name[MAX_NAME_LENGTH + 1]; // 1 place added for '\0'
+    Map defenceMap;
+    Map attackMap;
 
 } Player;
 
-typedef enum { up, right, down, left} Direction;
 
-typedef struct 
-{
-    //char skin; 
-    Coordinate start; 
-    int length; 
-    Direction direction;
-    
-} Ship;
 
 
 int main()
