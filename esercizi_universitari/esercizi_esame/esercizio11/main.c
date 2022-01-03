@@ -15,8 +15,6 @@ int main()
 	Piano piano;
 
 	svuotaPiano(piano);
-	stampaPiano(piano);
-	printf("\n\n");
 	attraversaCelle(piano, 1.5);
 	stampaPiano(piano);
 
@@ -43,13 +41,15 @@ void attraversaCelle(Piano piano, float m)
 		   	piano[cursorY][currX] = 1;	
 		}
 
-		/*if ( currY - (float) roundedCurrY > 0.0 )
+		if ( currY - (float) roundedCurrY > 0.0 )
 		{
+			/*
 			printf("Fixing\n");
 			printf("(x,y): (%d , %d)\n", currX, roundedCurrY);	
 			printf("End of fix\n");
-			piano[currX][roundedCurrY] = 1;
-		}*/
+			*/
+			piano[roundedCurrY][currX] = 1;
+		}
 		
 		prevY = roundedCurrY;
 	}
